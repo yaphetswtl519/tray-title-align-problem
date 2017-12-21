@@ -7,6 +7,9 @@ const BrowserWindow = electron.BrowserWindow
 const path = require('path')
 const url = require('url')
 
+const { Tray, nativeImage } = require('electron')
+const appIcon = nativeImage.createFromPath(`${__dirname}/icon.png`);
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
@@ -32,6 +35,9 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   })
+  const tray = new Tray(appIcon);
+  tray.setImage(appIcon);
+  tray.setTitle('4');
 }
 
 // This method will be called when Electron has finished
